@@ -6,7 +6,7 @@ Batchy is a very simple microservice for managing the state of jobs and workflow
 # Batchy
 
 ## Data Model
-Batchy is platformed on a NoSQL database called Redis.   It stores its data as a hash, so there is no fixed data model so to speak.  You can have as many parameters as you like and name them whatever makes sense for your application. Below is a list of special fields which have meaning withing Batchy.
+Batchy is platformed on a NoSQL database called Redis.   It stores its data as a hash, so there is no fixed data model so to speak.  You can have as many parameters as you like and name them whatever makes sense for your application. Below is a list of special fields which have meaning within Batchy.
 
 * batch_id - ETL batch ID, unix epoch time
 * status - new, open, success, failed
