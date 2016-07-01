@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class='container job_info'>      
+		<div class='row'>			
+			<div class='col-sm-12' style="color:#222f5b">
+				<h3>Job Info</h3>
+			</div>
+		</div>
+			<div class='row well well-sm'>				
+				<div class='col-sm-3' style="color:#03396C">
+					<p><b>Job Id:</b> {{ job.job_id }}<br>
+					<b>Job Name:</b> {{ job.job_name }}<br>					
+					<b>Running Test:</b> {{ job.current_test_name }}</p>
+				</div> 
+				<div class='col-sm-3' style="color:#03396C">
+			  		<p><b>Start Time:</b> {{ job.start_time }}<br>
+					<b>End Time:</b> {{ job.end_time }}<br>
+					<b>% Complete:</b> {{ job.percent_comp }}</p>
+				</div>
+				{% if job.error_occurred == "True" %}
+					<div class='col-sm-6' style="color:#7F0000">
+						<p><b><u> Error Log: </p></u></b> 
+						<p>{% for line in job.error %}  
+							 {{ line }} <br>
+						{% endfor %}</p>
+					</div>
+				{% endif %}
+			</div>       
+		</div>
+	</div>
+    <div class='container test_results'>
+		<div class='row text-center features'>
+			<div class='col-sm-2 col-sm-offset-4'>            
+				<h2>Job Status:</h2>
+				<br> <br>
+			</div>
+			<div class='col-sm-2'>
+				{% if job.status == "FAILED" %}
+				  <h1 class="text-danger"> {{ job.status }} </h1>
+				{% elif job.status == "ERROR" %}
+				  <h1 class="text-danger"> {{ job.status }} </h1>
+				{% elif job.status == "WARNING" %}
+				  <h1 class="text-warning"> {{ job.status }} </h1>
+				{% else %}				  
+				  <h1 class="text-success"> {{ job.status }} </h1>
+				{% endif %}    
+			</div>	
+		</div>
+    </div>
+    <div class='container test-results1'>
+		<div class='row'>
+			<div class='col-sm-1'>
+				<p><u><b>Test ID</b></u></p>
+			</div>
+			<div class='col-sm-3'>
+				<u><b><p>Description</p></b></u>
+			</div>
+			<div class='col-sm-1'>
+				<u><b><p>UL</p></b></u>
+			</div>
+			<div class='col-sm-1'>
+				<u><b><p>UW </p></b></u>
+			</div>
+			<div class='col-sm-1'>
+				<u><b><p>LW</p></b></u>
+			</div>
+			<div class='col-sm-1'>
+				<u><b><p>LL</p></b></u>
+			</div>
+			<div class='col-sm-1'>
+				<u><b><p>Comp</p></b></u>
+			</div>
+			<div class='col-sm-1'>
+				<u><b><p>Result</p></b></u>
+			</div>
+			<div class='col-sm-1'>
+				<u><b><p>Status</p></b></u>
+			</div>
+			<div class='col-sm-1'>
+				<u><b><p>Log</p></b></u>
+			</div>
+		</div>
+          
+		{% for test in tests %}  
+		<div class='row well well-sm'>
+			<div class='col-sm-1'>
+				<p>{{ test.test_id }}</p>
+			</div>
+			<div class='col-sm-3'>
+				<p>{{ test.test_name }}</p>
+			</div>
+			<div class='col-sm-1'>
+				<p>{{ test.upperlim }}</p>
+			</div>
+			<div class='col-sm-1'>
+				<p>{{ test.upperwarn }}</p>
+			</div>
+			<div class='col-sm-1'>
+				<p>{{ test.lowerwarn }}</p>
+			</div>
+			<div class='col-sm-1'>
+				<p>{{ test.lowerlim }}</p>
+			</div>
+			<div class='col-sm-1'>
+				<p>{{ test.comp }}</p>
+			</div>
+			<div class='col-sm-1'>
+				<p class=>{{ test.result }}</p>
+			</div>
+			<div class='col-sm-1'>
+				{% if test.status == "PASSED" %}
+				<p class="text-success"><b>{{ test.status }}</b></p>
+				{% elif test.status == "WARNING" %}
+				<p class="text-warning"><b>{{ test.status }}</b></p>
+				{% else %}
+				<p class="text-danger"><b>{{ test.status }}</b></p>		    
+				{% endif %}		    
+			</div>
+			{% if test.log_exists == "True"%}
+				<div class='col-sm-1'>
+					<p class="text-center" ><a href={{test.log_path}}> <i class='glyphicon glyphicon-eye-open'></i></a></p>	    
+				</div>
+			{% else %}
+				<div class='col-sm-1'>
+					<p class="text-center" > </p>	    
+				</div>
+			{% endif %}
+			{% if test.error != ''%}
+				<div class='col-sm-8 col-sm-offset-4'>       
+					<div class="alert alert-danger" role="alert"><i class='glyphicon glyphicon-warning-sign'></i> Error: {{ test.error }}</div>
+				</div>
+			{% elif test.status == "FAILED" and test.debug_msg != ''%}
+				<div class='col-sm-8 col-sm-offset-4'>       
+					<div class="alert alert-danger" role="alert"><i class='glyphicon glyphicon-warning-sign'></i> DIAG MSG: {{ test.debug_msg }}</div>
+				</div>
+			{% endif %}
+		</div>
+		{% endfor %}
+	</div>
+{% endblock %}
+
+
+
+

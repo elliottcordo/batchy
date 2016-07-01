@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class='container status'>
+      <div class='row text-center features'>
+        <div class='col-md-12'>
+	    <h1>Test Status:{{ status }}</h1>
+	</div>	
+      </div>
+     </div>
+     <div class='container test-results'>
+      <div class='row'>
+        <div class='col-sm-1'>
+	    <p><u><b> Test ID </b></u></p>
+	</div>
+	<div class='col-sm-4'>
+	    <u><b><p> Description </p></b></u>
+	</div>
+	<div class='col-sm-1'>
+	    <u><b><p> UL </p></b></u>
+	</div>
+	<div class='col-sm-1'>
+	    <u><b><p> UW </p></b></u>
+	</div>
+	<div class='col-sm-1'>
+	    <u><b><p> LW </p></b></u>
+	</div>
+	<div class='col-sm-1'>
+	    <u><b><p> LL </p></b></u>
+	</div>
+	<div class='col-sm-1'>
+	    <u><b><p> Comp </p></b></u>
+	</div>
+	<div class='col-sm-1'>
+	    <u><b><p> Result </p></b></u>
+	</div>
+	<div class='col-sm-1'>
+	    <u><b><p> Status </p></b></u>
+	</div>
+      </div>
+    
+	{% for test in tests %}
+	<!--<div><p>{{ test.testID }} says: <b>{{ test.name }}</b></p></div> -->
+	    <div class='row well well-sm'>
+		<div class='col-sm-1'>
+		    <p> {{ test.testID }} </p>
+		</div>
+		<div class='col-sm-4'>
+		    <p> {{ test.name }} </p>
+		</div>
+		<div class='col-sm-1'>
+		    <p> {{ test.upperLim }} </p>
+		</div>
+		<div class='col-sm-1'>
+		    <p> {{ test.upperWarn }} </p>
+		</div>
+		<div class='col-sm-1'>
+		    <p> {{ test.lowerWarn }} </p>
+		</div>
+		<div class='col-sm-1'>
+		    <p> {{ test.lowerLim }} </p>
+		</div>
+		<div class='col-sm-1'>
+		    <p> {{ test.compType }} </p>
+		</div>
+		<div class='col-sm-1'>
+		    <p class=> {{ test.result_1 }} </p>
+		</div>
+		<div class='col-sm-1'>
+		    {% if test.status == "PASSED" %}
+		    <p class="text-success"><b> {{ test.status }} </b></p>
+		    {% elif test.status == "WARNING" %}
+		    <p class="text-warning"><b> {{ test.status }} </b></p>
+		    {% else %}
+		    <p class="text-danger"><b> {{ test.status }} </b></p>
+		    {% endif %}
+		    
+		</div>
+	     </div>
+	{% endfor %}
+    {% endblock %}
+</div>
+
+
+<!--
+<div class='container'>
+      <div class='row'>
+        <div class='col-md-12'>
+          <h1>Blasting Off With Bootstrap</h1>
+        </div>
+      </div>
+
+      <div class='row well well-lg'>
+        <div class='col-md-6'>
+          <h2>The Fastest Way to Space</h2>
+          <p class='lead'>Make your way to space in the comfort of your own rocket, elevator or transporter.</p>
+          <button type='button' class='btn btn-lg btn-default'>Take the Tour</button>
+          <button type='button' class='btn btn-lg btn-primary'>Book Tickets Now</button>
+        </div>
+        <div class='col-md-6 visible-md visible-lg'>
+          <img src='images/img-header.jpg' alt='Blast off with Bootstrap' />
+        </div>
+      </div>
+
+      <div class='row text-center features'>
+        <div class='col-sm-4 col-xs-10 col-xs-offset-1 col-sm-offset-0'>
+          <i class='glyphicon glyphicon-briefcase'></i>
+          <h3>Book Today!</h3>
+          <p>Even if you're traveling tomorrow, you can still get tickets today. We have a number of conveniently located ports around the globe to service everyone.</p>
+        </div>
+
+        <div class='col-sm-4 col-xs-6'>
+          <i class='glyphicon glyphicon-random'></i>
+          <h3>Go Anywhere</h3>
+          <p>If you need to get to space today, why not try out a transporter? Despite the claims, there are have been no deaths in the last 6 weeks!</p>
+        </div>
+
+        <div class='col-sm-4 col-xs-6'>
+          <i class='glyphicon glyphicon-send'></i>
+          <h3>RocketBus&reg;</h3>
+          <p>For cheapest fares, catch the next RocketBus&reg; to the stars. Cheaper on your wallet, and easiest way to make friends.</p>
+        </div>
+      </div>
+    </div>
+    <div class='quote'>
+      <div class='container'>
+        <blockquote>
+          <p>Any sufficiently advanced technology is indistinguishable from magic.</p>
+          <footer>Arthur C. Clarke in <cite title="Source Title">Profiles of the Future</cite></footer>
+        </blockquote>
+      </div>
+    </div>
+
+    <div class='container transport-systems'>
+      <div class='row'>
+        <div class='col-md-10 col-md-offset-1'>
+          <h2>Our Transport Systems</h2>
+          <p>Learn more about our transport systems to find out which one is right for you. Pick out the mode of transport that works for your budget and risk level.</p>
+        </div>
+      </div>
+
+      <div class='row'>
+        <div class='transporter col-md-3 col-md-offset-1'>
+          <h3>Transporter</h3>
+          <ul>
+            <li>8 second travel time</li>
+            <li>Chance of death only 1 in 7,593</li>
+            <li>Low price of only $15.99!</li>
+          </ul>
+          <p><button><i class='glyphicon glyphicon-transfer'></i> Beam Me Up!</button></p>
+        </div>
+-->

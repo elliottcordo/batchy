@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class='container job_info'> 
+		<div class='row text-center features'>
+			<div class='col-md-2'>			
+				<h4 class="text-center" ><a href={{ result_path }}> <i class='glyphicon glyphicon-arrow-left'><u>Results</u></i></a></h4>
+			</div>	
+        </div>
+        
+		<div class='row text-center features'>
+			<div class='col-md-12' style="color:#222f5b">
+				<h3>Test Log - ID: {{test_id}}</h3>
+			</div>
+		</div>
+			<div class='row well well-sm'>				
+				<div class='col-md-8 col-md-offset-3' style="color:#03396C" >
+					{% for line in log %}  
+						<p> {{ line }} </p>
+					{% endfor %}		
+				</div> 
+			</div>       
+		</div>
+	</div>
+    
+{% endblock %}
+
+
+
+

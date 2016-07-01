@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+    <script language="javascript">
+        var SECONDS_TO_WAIT_BEFORE_RELOADING = 20
+        setTimeout(function () {
+            location.reload(true)
+        }, SECONDS_TO_WAIT_BEFORE_RELOADING * 1000);
+    </script>
+    <div class='container jobs-status'>
+		<div class='row'>
+			<div class='col-sm-2'>
+				<b><p> Name </p></b>
+			</div>
+			<div class='col-sm-2'>
+				<b><p>Last Start</p></b>
+			</div>
+			<div class='col-sm-2'>
+				<b><p>Last End</p></b>
+			</div>
+			<div class='col-sm-2'>
+				<b><p>Latency</p></b>
+			</div>
+			<div class='col-sm-3'>
+				<b><p>Results</p></b>
+			</div>
+      </div>
+    
+	  {% for job in jobs %}
+		<div class='row well well-sm'>
+		<div class='col-sm-2'>
+		    <p> {{ job.label }} </p>
+		</div>
+		<div class='col-sm-2'>
+		    <p> {{ job.last_start_time }} </p>
+		</div>
+		<div class='col-sm-2'>
+		    <p> {{ job.last_end_time }} </p>
+		</div>
+		<div class='col-sm-2'>
+		    <p> {{ job.latency }} </p>
+		</div>
+		<div class='col-sm-3'>
+		    {% if job.alert_level == "FAILURE" %}
+		    <p class="alert-sm alert-danger"><b> {{ job.status_message }} </b></p>
+		    {% elif job.alert_level == "WARNING" %}
+		    <p class="alert-sm alert-warning"><b> {{ job.status_message }} </b></p>
+		    {% elif job.alert_level == "SUCCESS" %}
+		    <p class="alert-sm alert-success"><b> {{ job.status_message }} </b></p>
+			{% else %}
+			<p class="alert-sm alert-info"><b> {{ job.status_message }} </b></p>
+		    {% endif %}
+		</div>
+	 </div>
+	{% endfor %}
+    <div class='container status'>
+		<div class='row text features'>
+			<div class='col-sm' >
+				<h6><b> {{asof}} </b><br><br></h6>
+			</div>
+		</div>
+	</div>
+    {% endblock %}
+</div>
+

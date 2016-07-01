@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class='container status'>
+      <div class='row text-center features'>
+        <div class='col-md-12'>            
+	    <h2 class="text-danger"><b>Whoops! </b></h2>
+	    <button type="button" class="btn btn-default btn-lg">
+		   <span class="glyphicon glyphicon-thumbs-down"></span>		   
+		</button><br><br>
+		</div>	
+      </div>
+    </div>     
+     
+     <div class='container jobs-status'>
+       <div class='row text-center features'>   
+		 <div class='col-sm-12'>
+			<p> The Test Set: '{{ test_set }}' does not exist in the database.</p><br><br>
+			<p> See below for valid test sets.</p><br><br>
+		 </div>
+	   </div>
+     </div>	
+    
+	{% for set in test_sets %}  
+	    <div class='row'>
+		<div class='col-sm-2 col-sm-offset-5'>
+		    <p><i> {{ set.test_set_name }} </i></p>
+		</div>
+		<div class='col-sm-1'>
+		    <p class="text-center" ><a href={{ set.url }}> Run </a></p>
+		</div>
+	      </div>
+	{% endfor %}
+
+    {% endblock %}
+
+
+
+

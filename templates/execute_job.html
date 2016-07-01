@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class='container status'>
+      <div class='row text-center features'>
+        <div class='col-md-12'>            
+	    <h2 class="text-success"><b>Success! </b></h2>
+	    <button type="button" class="btn btn-default btn-lg">
+		   <span class="glyphicon glyphicon-thumbs-up">
+		   </span>
+		</button><br><br>
+		</div>	
+      </div>
+    </div>     
+     
+     <div class='container jobs-status'>
+       <div class='row text-center features'>   
+		 <div class='col-md-12'>
+			<p> Test Set '{{ test_set }}' has been initiated and assigned Job ID: {{ job_id }}</p><br><br>
+			<p> You can view the results and status <a href={{ job_path }}> HERE</a></p>
+		 </div>
+	   </div>
+     </div>	
+    
+	
+    {% endblock %}
+
+
+
+

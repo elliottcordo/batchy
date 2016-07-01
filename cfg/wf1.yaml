@@ -1,0 +1,22 @@
+
+"job1":
+    param1: "hello"
+    param2: "2016-01-01"
+    status: "success"
+    batch_end_date: "2016-01-01T23:59"
+"job2":
+    reprocess_hours: 2
+    param1: "hello"
+    yippee: "2016-01-01"
+    from_date: "2016-01-01T23:59"
+    status: "new"
+
+"job3":
+    reprocess_hours: 2
+    trunc_start: True
+    param1: "hello"
+    param2: "2016-01-01"
+    from_date: "2016-01-01T23:59"
+    status: "new"
+
+

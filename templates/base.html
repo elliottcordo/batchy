@@ -1,0 +1,41 @@
+<html lang="en">
+  <head>
+    <title>Teletraan1</title>
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+	<div class="container">
+        <div class='col-md-10'>
+			<br><h4><b>
+                {% if title %}
+                {{ title }}
+                {% else %}Teletran1
+                {% endif %}
+            </b></h4>
+		</div>
+    	<div class='col-md-2'>
+			<br><img src= {{ logo }} width="90"  enlarge=True alt='Teletran'>
+		</div>
+	</div>	
+  </header>
+  
+  
+  
+  <body>    
+    <hr>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li>{{ message }} </li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </body>
+</html>

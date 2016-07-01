@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class='container status'>
+      <div class='row text-center features'>
+        <div class='col-md-12'>            
+	    <h2 class="text-danger"><b>Whoops! </b></h2>
+	    <button type="button" class="btn btn-default btn-lg">
+		   <span class="glyphicon glyphicon-thumbs-down"></span>		   
+		</button><br><br>
+		</div>	
+      </div>
+    </div>     
+     
+     <div class='container jobs-status'>
+       <div class='row text-center features'>   
+		 <div class='col-sm-12'>
+			{% for line in err_msg %}  
+				<p> {{ line }} </p>
+			{% endfor %}
+		 </div>
+	   </div>
+     </div>	
+    
+	
+    {% endblock %}
+
+
+
+
